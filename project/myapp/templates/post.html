@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block centralContent %}
+<div class="col-md-12">
+          {% if detail_post %}
+                    <!-- Post Detail-->
+                    <article class=""><a class="post-future-figure" href="#"></a>
+                      <div class="post-future-main">
+                      <div class="post-classic-aside"><a class="post-classic-figure" href="#"><img
+                          src={{ detail_post.image }} alt=""  /></a></div>
+                        <h4 class="post-future-title"><a href="#">{{ detail_post.title }}</a></h4>
+                        <div class="post-future-meta">
+                            <!-- Badge-->
+                            <div class="badge badge-secondary">{{detail_post.category}}</div>
+                          <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
+                            <time datetime="2020">{{ detail_post.date }}</time>
+                          </div>
+                          </br>
+                          <div>Autor/Fuente:
+                          </br>
+                          <div class="post-future-text">
+                              <p>{{ detail_post.autor }}</p>
+                          </div>
+                          </div>
+                        </div>
+                        <hr/>
+                        </br>
+                          <div class="post-future-text">
+                        <p>{{ detail_post.content |safe }}</p>
+                      </div>
+
+                        <div class="post-future-footer group-flex group-flex-xs"><a class="button button-gray-outline" href="#">Leer más</a>
+                          <div class="post-future-share">
+                            <div class="inline-toggle-parent">
+                              <div class="inline-toggle icon material-icons-share"></div>
+                              <div class="inline-toggle-element">
+                                <ul class="list-inline">
+
+                                  <li><a class="icon fa-facebook" href="#"></a></li>
+                                  <li><a class="icon fa-twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fultimasnoticias.com.ve%2Fnoticias%2Fpolitica%2Fmaduro-debemos-dejar-la-confrontacion-en-venezuela-cabemos-todos%2F&text=Maduro%3A%20debemos%20dejar%20la%20confrontaci%C3%B3n%2C%20en%20Venezuela%20cabemos%20todos%20%7C%20%C3%9Altimas%20Noticias"></a></li>
+                                  <li><a class="icon fa-google-plus" href="#"></a></li>
+                                  <li><a class="icon fa-instagram" href="#"></a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                    </div>
+        {% else %}
+        <div align = "center">
+        <h1 align = "center">NO EXISTEN POST REGISTRADO!</h1>
+        </br></br>
+        <img src="https://www.devservice.es/wp-content/uploads/2013/11/Buscador.png" alt=""  /></a>
+        </div>
+        {% endif %}
+{% endblock centralContent %}
