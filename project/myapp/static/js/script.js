@@ -5,68 +5,68 @@
 	 * Global variables
 	 */
 	var userAgent = navigator.userAgent.toLowerCase(),
-			initialDate = new Date(),
+		initialDate = new Date(),
 
-			$document = $(document),
-			$window = $(window),
-			$html = $("html"),
-			$body = $("body"),
+		$document = $(document),
+		$window = $(window),
+		$html = $("html"),
+		$body = $("body"),
 
-			isDesktop = $html.hasClass("desktop"),
-			isRtl = $html.attr("dir") === "rtl",
-			isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
-			isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+		isDesktop = $html.hasClass("desktop"),
+		isRtl = $html.attr("dir") === "rtl",
+		isIE = userAgent.indexOf("msie") !== -1 ? parseInt(userAgent.split("msie")[1], 10) : userAgent.indexOf("trident") !== -1 ? 11 : userAgent.indexOf("edge") !== -1 ? 12 : false,
+		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
 
-			windowReady = false,
-			isNoviBuilder = false,
-			preloaderAnimateionDuration = 300,
-			loaderTimeoutId,
+		windowReady = false,
+		isNoviBuilder = false,
+		preloaderAnimateionDuration = 300,
+		loaderTimeoutId,
 
-			plugins = {
-				preloader:               $(".preloader"),
-				bootstrapTooltip:        $("[data-toggle='tooltip']"),
-				bootstrapModalDialog:    $('.modal'),
-				bootstrapTabs:           $(".tabs-custom"),
-				bootstrapCollapse:       $(".card-custom"),
-				rdNavbar:                $(".rd-navbar"),
-				materialParallax:        $(".parallax-container"),
-				rdMailForm:              $(".rd-mailform"),
-				rdInputLabel:            $(".form-label"),
-				regula:                  $("[data-constraints]"),
-				rdRange:                 $('.rd-range'),
-				wow:                     $(".wow"),
-				owl:                     $(".owl-carousel"),
-				swiper:                  $(".swiper-slider"),
-				search:                  $(".rd-search"),
-				searchResults:           $('.rd-search-results'),
-				statefulButton:          $('.btn-stateful'),
-				popover:                 $('[data-toggle="popover"]'),
-				viewAnimate:             $('.view-animate'),
-				radio:                   $("input[type='radio']"),
-				checkbox:                $("input[type='checkbox']"),
-				customToggle:            $("[data-custom-toggle]"),
-				captcha:                 $('.recaptcha'),
-				lightGallery:            $("[data-lightgallery='group']"),
-				lightGalleryItem:        $("[data-lightgallery='item']"),
-				lightDynamicGalleryItem: $("[data-lightgallery='dynamic']"),
-				mailchimp:               $('.mailchimp-mailform'),
-				campaignMonitor:         $('.campaign-mailform'),
-				copyrightYear:           $(".copyright-year"),
-				selectFilter:            $("select"),
-				inlineToggle:            $('.inline-toggle'),
-				focusToggle:             $('.focus-toggle'),
-				stepper:                 $("input[type='number']"),
-				radioPanel:              $('.radio-panel .radio-inline'),
-				slick:                   $('.slick-slider'),
-				videoOverlay:            $('.video-overlay'),
-				counter:                 document.querySelectorAll('.counter'),
-				progressLinear:          document.querySelectorAll('.progress-linear'),
-				progressCircle:          document.querySelectorAll('.progress-bar-js'),
-				countdownCircle:         document.querySelectorAll('.countdown-circle-container'),
-				countdown:               document.querySelectorAll('.countdown'),
-				doughnutChart:           document.querySelectorAll('.doughnut-chart'),
-				lazyIFrame:              $('iframe[data-src]'),
-			};
+		plugins = {
+			preloader: $(".preloader"),
+			bootstrapTooltip: $("[data-toggle='tooltip']"),
+			bootstrapModalDialog: $('.modal'),
+			bootstrapTabs: $(".tabs-custom"),
+			bootstrapCollapse: $(".card-custom"),
+			rdNavbar: $(".rd-navbar"),
+			materialParallax: $(".parallax-container"),
+			rdMailForm: $(".rd-mailform"),
+			rdInputLabel: $(".form-label"),
+			regula: $("[data-constraints]"),
+			rdRange: $('.rd-range'),
+			wow: $(".wow"),
+			owl: $(".owl-carousel"),
+			swiper: $(".swiper-slider"),
+			search: $(".rd-search"),
+			searchResults: $('.rd-search-results'),
+			statefulButton: $('.btn-stateful'),
+			popover: $('[data-toggle="popover"]'),
+			viewAnimate: $('.view-animate'),
+			radio: $("input[type='radio']"),
+			checkbox: $("input[type='checkbox']"),
+			customToggle: $("[data-custom-toggle]"),
+			captcha: $('.recaptcha'),
+			lightGallery: $("[data-lightgallery='group']"),
+			lightGalleryItem: $("[data-lightgallery='item']"),
+			lightDynamicGalleryItem: $("[data-lightgallery='dynamic']"),
+			mailchimp: $('.mailchimp-mailform'),
+			campaignMonitor: $('.campaign-mailform'),
+			copyrightYear: $(".copyright-year"),
+			selectFilter: $("select"),
+			inlineToggle: $('.inline-toggle'),
+			focusToggle: $('.focus-toggle'),
+			stepper: $("input[type='number']"),
+			radioPanel: $('.radio-panel .radio-inline'),
+			slick: $('.slick-slider'),
+			videoOverlay: $('.video-overlay'),
+			counter: document.querySelectorAll('.counter'),
+			progressLinear: document.querySelectorAll('.progress-linear'),
+			progressCircle: document.querySelectorAll('.progress-bar-js'),
+			countdownCircle: document.querySelectorAll('.countdown-circle-container'),
+			countdown: document.querySelectorAll('.countdown'),
+			doughnutChart: document.querySelectorAll('.doughnut-chart'),
+			lazyIFrame: $('iframe[data-src]'),
+		};
 
 	/**
 	 * @desc Check the element was been scrolled into the view
@@ -100,13 +100,13 @@
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
 			pageTransition({
-				target:            document.querySelector('.page'),
-				delay:             0,
-				duration:          500,
-				classIn:           'fadeIn',
-				classOut:          'fadeOut',
-				classActive:       'animated',
-				conditions:        function (event, link) {
+				target: document.querySelector('.page'),
+				delay: 0,
+				duration: 500,
+				classIn: 'fadeIn',
+				classOut: 'fadeOut',
+				classActive: 'animated',
+				conditions: function (event, link) {
 					return link && !/(\#|javascript:void\(0\)|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
 				},
 				onTransitionStart: function (options) {
@@ -114,7 +114,7 @@
 						plugins.preloader.removeClass('loaded');
 					}, options.duration * .75);
 				},
-				onReady:           function () {
+				onReady: function () {
 					plugins.preloader.addClass('loaded');
 					windowReady = true;
 				}
@@ -126,14 +126,14 @@
 
 			for (let i = 0; i < plugins.countdownCircle.length; i++) {
 				let
-						node = plugins.countdownCircle[i],
-						countdown = aCountdown({
-							node:  node,
-							from:  node.getAttribute('data-from'),
-							to:    node.getAttribute('data-to'),
-							count: node.getAttribute('data-count'),
-							tick:  100,
-						});
+					node = plugins.countdownCircle[i],
+					countdown = aCountdown({
+						node: node,
+						from: node.getAttribute('data-from'),
+						to: node.getAttribute('data-to'),
+						count: node.getAttribute('data-count'),
+						tick: 100,
+					});
 			}
 		}
 
@@ -141,11 +141,11 @@
 		if (plugins.countdown.length) {
 			for (let i = 0; i < plugins.countdown.length; i++) {
 				var $countDownItem = $(plugins.countdown[i]),
-						d = new Date(),
-						type = $countDownItem.attr('data-type'),
-						time = $countDownItem.attr('data-time'),
-						format = $countDownItem.attr('data-format'),
-						settings = [];
+					d = new Date(),
+					type = $countDownItem.attr('data-type'),
+					time = $countDownItem.attr('data-time'),
+					format = $countDownItem.attr('data-format'),
+					settings = [];
 
 				// Classic style
 				if ($countDownItem.attr('data-style') === 'short') {
@@ -163,25 +163,25 @@
 		if (plugins.progressLinear) {
 			for (let i = 0; i < plugins.progressLinear.length; i++) {
 				let
-						container = plugins.progressLinear[i],
-						counter = aCounter({
-							node:     container.querySelector('.progress-value'),
-							duration: container.getAttribute('progress-value') || 1000,
-							onStart:  function () {
-								this.custom.bar.style.width = this.params.to + '%';
-							}
-						});
+					container = plugins.progressLinear[i],
+					counter = aCounter({
+						node: container.querySelector('.progress-value'),
+						duration: container.getAttribute('progress-value') || 1000,
+						onStart: function () {
+							this.custom.bar.style.width = this.params.to + '%';
+						}
+					});
 
 				counter.custom = {
 					container: container,
-					bar:       container.querySelector('.progress-bar-linear'),
-					onScroll:  (function () {
+					bar: container.querySelector('.progress-bar-linear'),
+					onScroll: (function () {
 						if ((Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) || isNoviBuilder) {
 							this.run();
 							this.custom.container.classList.add('animated');
 						}
 					}).bind(counter),
-					onBlur:    (function () {
+					onBlur: (function () {
 						this.params.to = parseInt(this.params.node.textContent, 10);
 						this.run();
 					}).bind(counter)
@@ -201,27 +201,27 @@
 		if (plugins.progressCircle) {
 			for (let i = 0; i < plugins.progressCircle.length; i++) {
 				let
-						container = plugins.progressCircle[i],
-						counter = aCounter({
-							node:     container.querySelector('.progress-circle-counter'),
-							duration: 500,
-							onUpdate: function (value) {
-								this.custom.bar.render(value * 3.6);
-							}
-						});
+					container = plugins.progressCircle[i],
+					counter = aCounter({
+						node: container.querySelector('.progress-circle-counter'),
+						duration: 500,
+						onUpdate: function (value) {
+							this.custom.bar.render(value * 3.6);
+						}
+					});
 
 				counter.params.onComplete = counter.params.onUpdate;
 
 				counter.custom = {
 					container: container,
-					bar:       aProgressCircle({node: container.querySelector('.progress-circle-bar')}),
-					onScroll:  (function () {
+					bar: aProgressCircle({ node: container.querySelector('.progress-circle-bar') }),
+					onScroll: (function () {
 						if (Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) {
 							this.run();
 							this.custom.container.classList.add('animated');
 						}
 					}).bind(counter),
-					onBlur:    (function () {
+					onBlur: (function () {
 						this.params.to = parseInt(this.params.node.textContent, 10);
 						this.run();
 					}).bind(counter)
@@ -241,11 +241,11 @@
 		if (plugins.doughnutChart.length) {
 			for (var i = 0; i < plugins.doughnutChart.length; i++) {
 				var $element = $(plugins.doughnutChart[i]),
-						$chartDataList = $element.find('.doughnut-chart-list').first();
+					$chartDataList = $element.find('.doughnut-chart-list').first();
 
 				if ($chartDataList) {
 					var ratioValues = [],
-							chartDataListItems = $chartDataList.find('> li');
+						chartDataListItems = $chartDataList.find('> li');
 
 					for (var k = 0; k < chartDataListItems.length; k++) {
 						var value = Math.abs(chartDataListItems[k].getAttribute('data-value') * 1);
@@ -255,14 +255,14 @@
 					}
 
 					$element.drawDoughnutChart(
-							ratioValues, {
-								segmentShowStroke:     false,
-								segmentStrokeWidth:    0,
-								baseColor:             '#f5f5f5',
-								baseOffset:            0,
-								edgeOffset:            1,
-								percentageInnerCutout: 85
-							}
+						ratioValues, {
+						segmentShowStroke: false,
+						segmentStrokeWidth: 0,
+						baseColor: '#f5f5f5',
+						baseOffset: 0,
+						edgeOffset: 1,
+						percentageInnerCutout: 85
+					}
 					);
 				}
 			}
@@ -279,7 +279,7 @@
 		 */
 		function getSwiperHeight(object, attr) {
 			var val = object.attr("data-" + attr),
-					dim;
+				dim;
 
 			if (!val) {
 				return undefined;
@@ -309,9 +309,9 @@
 		 */
 		function toggleSwiperInnerVideos(swiper) {
 			var prevSlide = $(swiper.slides[swiper.previousIndex]),
-					nextSlide = $(swiper.slides[swiper.activeIndex]),
-					videos,
-					videoItems = prevSlide.find("video");
+				nextSlide = $(swiper.slides[swiper.activeIndex]),
+				videos,
+				videoItems = prevSlide.find("video");
 
 			for (var i = 0; i < videoItems.length; i++) {
 				videoItems[i].pause();
@@ -329,26 +329,26 @@
 		 */
 		function toggleSwiperCaptionAnimation(swiper) {
 			var prevSlide = $(swiper.container).find("[data-caption-animate]"),
-					nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
-					delay,
-					duration,
-					nextSlideItem,
-					prevSlideItem;
+				nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
+				delay,
+				duration,
+				nextSlideItem,
+				prevSlideItem;
 
 			for (var i = 0; i < prevSlide.length; i++) {
 				prevSlideItem = $(prevSlide[i]);
 
 				prevSlideItem.removeClass("animated")
-				.removeClass(prevSlideItem.attr("data-caption-animate"))
-				.addClass("not-animated");
+					.removeClass(prevSlideItem.attr("data-caption-animate"))
+					.addClass("not-animated");
 			}
 
 			var tempFunction = function (nextSlideItem, duration) {
 				return function () {
 					nextSlideItem
-					.removeClass("not-animated")
-					.addClass(nextSlideItem.attr("data-caption-animate"))
-					.addClass("animated");
+						.removeClass("not-animated")
+						.addClass(nextSlideItem.attr("data-caption-animate"))
+						.addClass("animated");
 					if (duration) {
 						nextSlideItem.css('animation-duration', duration + 'ms');
 					}
@@ -378,8 +378,8 @@
 		 */
 		function initOwlCarousel(c) {
 			var aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"],
-					values = [0, 576, 768, 992, 1200, 1600],
-					responsive = {};
+				values = [0, 576, 768, 992, 1200, 1600],
+				responsive = {};
 
 			for (var j = 0; j < values.length; j++) {
 				responsive[values[j]] = {};
@@ -401,7 +401,7 @@
 				// Enable custom pagination
 				if (c.attr('data-dots-custom')) {
 					var customPag = $($carousel.attr("data-dots-custom")),
-							active = 0;
+						active = 0;
 
 					if ($carousel.attr('data-active')) {
 						active = parseInt($carousel.attr('data-active'), 10);
@@ -441,39 +441,39 @@
 			});
 
 			c.owlCarousel({
-				autoplay:           isNoviBuilder ? false : c.attr("data-autoplay") === "true",
-				autoplayTimeout:    c.data("autoplay-timeout"),
+				autoplay: isNoviBuilder ? false : c.attr("data-autoplay") === "true",
+				autoplayTimeout: c.data("autoplay-timeout"),
 				autoplayHoverPause: c.data("autoplay-hover-pause"),
-				autoplaySpeed:      c.data("data-autoplay-speed"),
-				center:             c.data("data-center"),
-				startPosition:      c.data("data-start-position"),
-				loop:               isNoviBuilder ? false : c.attr("data-loop") === "true",
-				items:              1,
-				rtl:                isRtl,
-				autoWidth:          c.data("data-autowidth") === "true",
-				autoHeight:         c.data("data-autoheight") === "true",
-				dotsContainer:      c.attr("data-pagination-class") || false,
-				navContainer:       c.attr("data-navigation-class") || false,
-				mouseDrag:          isNoviBuilder ? false : c.attr("data-mouse-drag") !== "false",
-				touchDrag:          c.data("data-touch-drag"),
-				dragEndSpeed:       c.data("data-drag-end-speed"),
-				nav:                c.attr('data-nav') === 'true',
-				navSpeed:           c.data("data-nav-speed"),
-				dots:               c.attr("data-dots") === "true",
-				dotsSpeed:          c.data("dots-speed"),
-				dotsEach:           c.attr("data-dots-each") ? parseInt(c.attr("data-dots-each"), 10) : false,
-				animateIn:          c.attr('data-animation-in') ? c.attr('data-animation-in') : false,
-				animateOut:         c.attr('data-animation-out') ? c.attr('data-animation-out') : false,
-				lazyLoad:           c.data("data-lazy-load"),
-				responsive:         responsive,
-				navText:            function () {
+				autoplaySpeed: c.data("data-autoplay-speed"),
+				center: c.data("data-center"),
+				startPosition: c.data("data-start-position"),
+				loop: isNoviBuilder ? false : c.attr("data-loop") === "true",
+				items: 1,
+				rtl: isRtl,
+				autoWidth: c.data("data-autowidth") === "true",
+				autoHeight: c.data("data-autoheight") === "true",
+				dotsContainer: c.attr("data-pagination-class") || false,
+				navContainer: c.attr("data-navigation-class") || false,
+				mouseDrag: isNoviBuilder ? false : c.attr("data-mouse-drag") !== "false",
+				touchDrag: c.data("data-touch-drag"),
+				dragEndSpeed: c.data("data-drag-end-speed"),
+				nav: c.attr('data-nav') === 'true',
+				navSpeed: c.data("data-nav-speed"),
+				dots: c.attr("data-dots") === "true",
+				dotsSpeed: c.data("dots-speed"),
+				dotsEach: c.attr("data-dots-each") ? parseInt(c.attr("data-dots-each"), 10) : false,
+				animateIn: c.attr('data-animation-in') ? c.attr('data-animation-in') : false,
+				animateOut: c.attr('data-animation-out') ? c.attr('data-animation-out') : false,
+				lazyLoad: c.data("data-lazy-load"),
+				responsive: responsive,
+				navText: function () {
 					try {
 						return JSON.parse(c.attr("data-nav-text"));
 					} catch (e) {
 						return [];
 					}
 				}(),
-				navClass:           function () {
+				navClass: function () {
 					try {
 						return JSON.parse(c.attr("data-nav-class"));
 					} catch (e) {
@@ -506,12 +506,12 @@
 			if (!isNoviBuilder) {
 				$(itemsToInit).lightGallery({
 					thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
-					selector:  "[data-lightgallery='item']",
-					autoplay:  $(itemsToInit).attr("data-lg-autoplay") === "true",
-					pause:     parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
-					addClass:  addClass,
-					mode:      $(itemsToInit).attr("data-lg-animation") || "lg-slide",
-					loop:      $(itemsToInit).attr("data-lg-loop") !== "false"
+					selector: "[data-lightgallery='item']",
+					autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
+					pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
+					addClass: addClass,
+					mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
+					loop: $(itemsToInit).attr("data-lg-loop") !== "false"
 				});
 			}
 		}
@@ -526,13 +526,13 @@
 				$(itemsToInit).on("click", function () {
 					$(itemsToInit).lightGallery({
 						thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
-						selector:  "[data-lightgallery='item']",
-						autoplay:  $(itemsToInit).attr("data-lg-autoplay") === "true",
-						pause:     parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
-						addClass:  addClass,
-						mode:      $(itemsToInit).attr("data-lg-animation") || "lg-slide",
-						loop:      $(itemsToInit).attr("data-lg-loop") !== "false",
-						dynamic:   true,
+						selector: "[data-lightgallery='item']",
+						autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
+						pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
+						addClass: addClass,
+						mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
+						loop: $(itemsToInit).attr("data-lg-loop") !== "false",
+						dynamic: true,
 						dynamicEl: JSON.parse($(itemsToInit).attr("data-lg-dynamic-elements")) || []
 					});
 				});
@@ -547,17 +547,17 @@
 		function initLightGalleryItem(itemToInit, addClass) {
 			if (!isNoviBuilder) {
 				$(itemToInit).lightGallery({
-					selector:            "this",
-					addClass:            addClass,
-					counter:             false,
+					selector: "this",
+					addClass: addClass,
+					counter: false,
 					youtubePlayerParams: {
 						modestbranding: 1,
-						showinfo:       0,
-						rel:            0,
-						controls:       0
+						showinfo: 0,
+						rel: 0,
+						controls: 0
 					},
-					vimeoPlayerParams:   {
-						byline:   0,
+					vimeoPlayerParams: {
+						byline: 0,
 						portrait: 0
 					}
 				});
@@ -573,12 +573,12 @@
 			options.current++;
 			options.spin.addClass('loading');
 			$.get(handler, {
-				s:          decodeURI(options.term),
+				s: decodeURI(options.term),
 				liveSearch: options.live,
-				dataType:   "html",
-				liveCount:  options.liveCount,
-				filter:     options.filter,
-				template:   options.template
+				dataType: "html",
+				liveCount: options.liveCount,
+				filter: options.filter,
+				template: options.template
 			}, function (data) {
 				options.processed++;
 				var live = $('#' + options.live);
@@ -600,9 +600,9 @@
 		function attachFormValidator(elements) {
 			// Custom validator - phone number
 			regula.custom({
-				name:           'PhoneNumber',
+				name: 'PhoneNumber',
 				defaultMessage: 'Invalid phone number format',
-				validator:      function () {
+				validator: function () {
 					if (this.value === '') return true;
 					else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
 				}
@@ -632,19 +632,19 @@
 
 			var regularConstraintsMessages = [
 				{
-					type:       regula.Constraint.Required,
+					type: regula.Constraint.Required,
 					newMessage: "The text field is required."
 				},
 				{
-					type:       regula.Constraint.Email,
+					type: regula.Constraint.Email,
 					newMessage: "The email is not a valid email."
 				},
 				{
-					type:       regula.Constraint.Numeric,
+					type: regula.Constraint.Numeric,
 					newMessage: "Only numbers are required"
 				},
 				{
-					type:       regula.Constraint.Selected,
+					type: regula.Constraint.Selected,
 					newMessage: "Please choose an option."
 				}
 			];
@@ -703,25 +703,25 @@
 
 			if (captchaToken.length === 0) {
 				captcha
-				.siblings('.form-validation')
-				.html('Please, prove that you are not robot.')
-				.addClass('active');
+					.siblings('.form-validation')
+					.html('Please, prove that you are not robot.')
+					.addClass('active');
 				captcha
-				.closest('.form-wrap')
-				.addClass('has-error');
+					.closest('.form-wrap')
+					.addClass('has-error');
 
 				captcha.on('propertychange', function () {
 					var $this = $(this),
-							captchaToken = $this.find('.g-recaptcha-response').val();
+						captchaToken = $this.find('.g-recaptcha-response').val();
 
 					if (captchaToken.length > 0) {
 						$this
-						.closest('.form-wrap')
-						.removeClass('has-error');
+							.closest('.form-wrap')
+							.removeClass('has-error');
 						$this
-						.siblings('.form-validation')
-						.removeClass('active')
-						.html('');
+							.siblings('.form-validation')
+							.removeClass('active')
+							.html('');
 						$this.off('propertychange');
 					}
 				});
@@ -740,15 +740,15 @@
 				var $capthcaItem = $(plugins.captcha[i]);
 
 				grecaptcha.render(
-						$capthcaItem.attr('id'),
-						{
-							sitekey:  $capthcaItem.attr('data-sitekey'),
-							size:     $capthcaItem.attr('data-size') ? $capthcaItem.attr('data-size') : 'normal',
-							theme:    $capthcaItem.attr('data-theme') ? $capthcaItem.attr('data-theme') : 'light',
-							callback: function (e) {
-								$('.recaptcha').trigger('propertychange');
-							}
+					$capthcaItem.attr('id'),
+					{
+						sitekey: $capthcaItem.attr('data-sitekey'),
+						size: $capthcaItem.attr('data-size') ? $capthcaItem.attr('data-size') : 'normal',
+						theme: $capthcaItem.attr('data-theme') ? $capthcaItem.attr('data-theme') : 'light',
+						callback: function (e) {
+							$('.recaptcha').trigger('propertychange');
 						}
+					}
 				);
 				$capthcaItem.after("<span class='form-validation'></span>");
 			}
@@ -804,10 +804,10 @@
 			if (isIE < 11) {
 				if (plugins.pointerEvents) {
 					$.getScript(plugins.pointerEvents)
-					.done(function () {
-						$html.addClass("ie-10");
-						PointerEventsPolyfill.initialize({});
-					});
+						.done(function () {
+							$html.addClass("ie-10");
+							PointerEventsPolyfill.initialize({});
+						});
 				}
 			}
 
@@ -843,8 +843,8 @@
 
 				modalItem.on('hidden.bs.modal', $.proxy(function () {
 					var activeModal = $(this),
-							rdVideoInside = activeModal.find('video'),
-							youTubeVideoInside = activeModal.find('iframe');
+						rdVideoInside = activeModal.find('video'),
+						youTubeVideoInside = activeModal.find('iframe');
 
 					if (rdVideoInside.length) {
 						rdVideoInside[0].pause();
@@ -854,8 +854,8 @@
 						var videoUrl = youTubeVideoInside.attr('src');
 
 						youTubeVideoInside
-						.attr('src', '')
-						.attr('src', videoUrl);
+							.attr('src', '')
+							.attr('src', videoUrl);
 					}
 				}, modalItem))
 			}
@@ -961,11 +961,11 @@
 				var select = $(plugins.selectFilter[i]);
 
 				select.select2({
-					placeholder:             select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
+					placeholder: select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
 					minimumResultsForSearch: select.attr("data-minimum-results-search") ? select.attr("data-minimum-results-search") : -1,
-					maximumSelectionSize:    3,
-					selectOnBlur:            false,
-					dropdownCssClass:        select.attr("data-dropdown-class") ? select.attr("data-dropdown-class") : ''
+					maximumSelectionSize: 3,
+					selectOnBlur: false,
+					dropdownCssClass: select.attr("data-dropdown-class") ? select.attr("data-dropdown-class") : ''
 				});
 			}
 		}
@@ -996,7 +996,7 @@
 		 */
 		if (isDesktop && !isNoviBuilder) {
 			$().UItoTop({
-				easingType:     'easeOutQuad',
+				easingType: 'easeOutQuad',
 				containerClass: 'ui-to-top fa fa-angle-up'
 			});
 		}
@@ -1018,8 +1018,8 @@
 		var notCarouselItems = [];
 		for (var z = 0; z < plugins.lightGalleryItem.length; z++) {
 			if (!$(plugins.lightGalleryItem[z]).parents('.owl-carousel').length &&
-					!$(plugins.lightGalleryItem[z]).parents('.swiper-slider').length &&
-					!$(plugins.lightGalleryItem[z]).parents('.slick-slider').length) {
+				!$(plugins.lightGalleryItem[z]).parents('.swiper-slider').length &&
+				!$(plugins.lightGalleryItem[z]).parents('.slick-slider').length) {
 				notCarouselItems.push(plugins.lightGalleryItem[z]);
 			}
 		}
@@ -1085,11 +1085,11 @@
 			}
 
 			plugins.rdNavbar.RDNavbar({
-				anchorNav:    !isNoviBuilder,
+				anchorNav: !isNoviBuilder,
 				stickUpClone: (plugins.rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? plugins.rdNavbar.attr("data-stick-up-clone") === 'true' : false,
-				responsive:   responsiveNavbar,
-				callbacks:    {
-					onStuck:        function () {
+				responsive: responsiveNavbar,
+				callbacks: {
+					onStuck: function () {
 						var navbarSearch = this.$element.find('.rd-search input');
 
 						if (navbarSearch) {
@@ -1104,7 +1104,7 @@
 					onDropdownOver: function () {
 						return !isNoviBuilder;
 					},
-					onUnstuck:      function () {
+					onUnstuck: function () {
 						if (this.$clone === null)
 							return;
 
@@ -1131,23 +1131,23 @@
 		if (plugins.search.length || plugins.searchResults) {
 			var handler = "bat/rd-search.php";
 			var defaultTemplate = '<h6 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h6>' +
-					'<p>...#{token}...</p>' +
-					'<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
+				'<p>...#{token}...</p>' +
+				'<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
 			var defaultFilter = '*.html';
 
 			if (plugins.search.length) {
 				for (var i = 0; i < plugins.search.length; i++) {
 					var searchItem = $(plugins.search[i]),
-							options = {
-								element:   searchItem,
-								filter:    (searchItem.attr('data-search-filter')) ? searchItem.attr('data-search-filter') : defaultFilter,
-								template:  (searchItem.attr('data-search-template')) ? searchItem.attr('data-search-template') : defaultTemplate,
-								live:      (searchItem.attr('data-search-live')) ? searchItem.attr('data-search-live') : false,
-								liveCount: (searchItem.attr('data-search-live-count')) ? parseInt(searchItem.attr('data-search-live'), 10) : 4,
-								current:   0,
-								processed: 0,
-								timer:     {}
-							};
+						options = {
+							element: searchItem,
+							filter: (searchItem.attr('data-search-filter')) ? searchItem.attr('data-search-filter') : defaultFilter,
+							template: (searchItem.attr('data-search-template')) ? searchItem.attr('data-search-template') : defaultTemplate,
+							live: (searchItem.attr('data-search-live')) ? searchItem.attr('data-search-live') : false,
+							liveCount: (searchItem.attr('data-search-live-count')) ? parseInt(searchItem.attr('data-search-live'), 10) : 4,
+							current: 0,
+							processed: 0,
+							timer: {}
+						};
 
 					var $toggle = $('.rd-navbar-search-toggle');
 					if ($toggle.length) {
@@ -1190,9 +1190,9 @@
 
 					searchItem.submit($.proxy(function () {
 						$('<input />').attr('type', 'hidden')
-						.attr('name', "filter")
-						.attr('value', this.filter)
-						.appendTo(this.element);
+							.attr('name', "filter")
+							.attr('value', this.filter)
+							.appendTo(this.element);
 						return true;
 					}, options, this))
 				}
@@ -1204,11 +1204,11 @@
 
 				if (match !== null) {
 					$.get(handler, {
-						s:        decodeURI(match[1]),
+						s: decodeURI(match[1]),
 						dataType: "html",
-						filter:   match[2],
+						filter: match[2],
 						template: defaultTemplate,
-						live:     ''
+						live: ''
 					}, function (data) {
 						plugins.searchResults.html(data);
 					})
@@ -1228,7 +1228,7 @@
 						this.addClass("active");
 					}
 				}, $view))
-				.trigger("scroll");
+					.trigger("scroll");
 			}
 		}
 
@@ -1240,57 +1240,57 @@
 			for (var i = 0; i < plugins.swiper.length; i++) {
 				var s = $(plugins.swiper[i]);
 				var pag = s.find(".swiper-pagination"),
-						next = s.find(".swiper-button-next"),
-						prev = s.find(".swiper-button-prev"),
-						bar = s.find(".swiper-scrollbar"),
-						swiperSlide = s.find(".swiper-slide"),
-						autoplay = false;
+					next = s.find(".swiper-button-next"),
+					prev = s.find(".swiper-button-prev"),
+					bar = s.find(".swiper-scrollbar"),
+					swiperSlide = s.find(".swiper-slide"),
+					autoplay = false;
 
 				for (var j = 0; j < swiperSlide.length; j++) {
 					var $this = $(swiperSlide[j]),
-							url;
+						url;
 
 					if (url = $this.attr("data-slide-bg")) {
 						$this.css({
 							"background-image": "url(" + url + ")",
-							"background-size":  "cover"
+							"background-size": "cover"
 						})
 					}
 				}
 
 				swiperSlide.end()
-				.find("[data-caption-animate]")
-				.addClass("not-animated")
-				.end();
+					.find("[data-caption-animate]")
+					.addClass("not-animated")
+					.end();
 
 				s.swiper({
-					autoplay:                 s.attr('data-autoplay') ? s.attr('data-autoplay') === "false" || s.attr('data-autoplay-hover') === "true" ? undefined : s.attr('data-autoplay') : 5000,
-					direction:                s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
-					effect:                   s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
-					speed:                    s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 600,
-					keyboardControl:          s.attr('data-keyboard') === "true",
-					mousewheelControl:        s.attr('data-mousewheel') === "true",
+					autoplay: s.attr('data-autoplay') ? s.attr('data-autoplay') === "false" || s.attr('data-autoplay-hover') === "true" ? undefined : s.attr('data-autoplay') : 5000,
+					direction: s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
+					effect: s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
+					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 600,
+					keyboardControl: s.attr('data-keyboard') === "true",
+					mousewheelControl: s.attr('data-mousewheel') === "true",
 					mousewheelReleaseOnEdges: s.attr('data-mousewheel-releaase') === "true",
-					lazyLoading:              s.attr('data-lazy-loading') === "true",
-					nextButton:               next.length ? next.get(0) : null,
-					prevButton:               prev.length ? prev.get(0) : null,
-					pagination:               pag.length ? pag.get(0) : null,
-					paginationClickable:      pag.length ? pag.attr("data-clickable") !== "false" : false,
-					paginationBulletRender:   pag.length ? pag.attr("data-index-bullet") === "true" ? function (swiper, index, className) {
+					lazyLoading: s.attr('data-lazy-loading') === "true",
+					nextButton: next.length ? next.get(0) : null,
+					prevButton: prev.length ? prev.get(0) : null,
+					pagination: pag.length ? pag.get(0) : null,
+					paginationClickable: pag.length ? pag.attr("data-clickable") !== "false" : false,
+					paginationBulletRender: pag.length ? pag.attr("data-index-bullet") === "true" ? function (swiper, index, className) {
 						return '<span class="' + className + '"><span>' + ((index + 1) < 10 ? ('0' + (index + 1)) : (index + 1)) + '</span></span>';
 					} : null : null,
-					scrollbar:                bar.length ? bar.get(0) : null,
-					scrollbarDraggable:       bar.length ? bar.attr("data-draggable") !== "false" : true,
-					scrollbarHide:            bar.length ? bar.attr("data-draggable") === "false" : false,
-					loop:                     isNoviBuilder ? false : s.attr('data-loop') !== "false",
-					simulateTouch:            s.attr('data-simulate-touch') && !isNoviBuilder ? s.attr('data-simulate-touch') === "true" : false,
-					onTransitionStart:        function (swiper) {
+					scrollbar: bar.length ? bar.get(0) : null,
+					scrollbarDraggable: bar.length ? bar.attr("data-draggable") !== "false" : true,
+					scrollbarHide: bar.length ? bar.attr("data-draggable") === "false" : false,
+					loop: isNoviBuilder ? false : s.attr('data-loop') !== "false",
+					simulateTouch: s.attr('data-simulate-touch') && !isNoviBuilder ? s.attr('data-simulate-touch') === "true" : false,
+					onTransitionStart: function (swiper) {
 						toggleSwiperInnerVideos(swiper);
 					},
-					onTransitionEnd:          function (swiper) {
+					onTransitionEnd: function (swiper) {
 						toggleSwiperCaptionAnimation(swiper);
 					},
-					onInit:                   function (swiper) {
+					onInit: function (swiper) {
 						toggleSwiperInnerVideos(swiper);
 						toggleSwiperCaptionAnimation(swiper);
 
@@ -1315,7 +1315,7 @@
 				$window.on("resize", (function (s) {
 					return function () {
 						var mh = getSwiperHeight(s, "min-height"),
-								h = getSwiperHeight(s, "height");
+							h = getSwiperHeight(s, "height");
 						if (h) {
 							s.css("height", mh ? mh > h ? mh : h : h);
 						}
@@ -1346,7 +1346,7 @@
 		if (plugins.mailchimp.length) {
 			for (i = 0; i < plugins.mailchimp.length; i++) {
 				var $mailchimpItem = $(plugins.mailchimp[i]),
-						$email = $mailchimpItem.find('input[type="email"]');
+					$email = $mailchimpItem.find('input[type="email"]');
 
 				// Required by MailChimp
 				$mailchimpItem.attr('novalidate', 'true');
@@ -1358,26 +1358,26 @@
 					var $this = this;
 
 					var data = {},
-							url = $this.attr('action').replace('/post?', '/post-json?').concat('&c=?'),
-							dataArray = $this.serializeArray(),
-							$output = $("#" + $this.attr("data-form-output"));
+						url = $this.attr('action').replace('/post?', '/post-json?').concat('&c=?'),
+						dataArray = $this.serializeArray(),
+						$output = $("#" + $this.attr("data-form-output"));
 
 					for (i = 0; i < dataArray.length; i++) {
 						data[dataArray[i].name] = dataArray[i].value;
 					}
 
 					$.ajax({
-						data:       data,
-						url:        url,
-						dataType:   'jsonp',
-						error:      function (resp, text) {
+						data: data,
+						url: url,
+						dataType: 'jsonp',
+						error: function (resp, text) {
 							$output.html('Server error: ' + text);
 
 							setTimeout(function () {
 								$output.removeClass("active");
 							}, 4000);
 						},
-						success:    function (resp) {
+						success: function (resp) {
 							$output.html(resp.msg).addClass('active');
 							$email[0].value = '';
 							var $label = $('[for="' + $email.attr('id') + '"]');
@@ -1439,27 +1439,27 @@
 
 				$campaignItem.on('submit', $.proxy(function (e) {
 					var data = {},
-							url = this.attr('action'),
-							dataArray = this.serializeArray(),
-							$output = $("#" + plugins.campaignMonitor.attr("data-form-output")),
-							$this = $(this);
+						url = this.attr('action'),
+						dataArray = this.serializeArray(),
+						$output = $("#" + plugins.campaignMonitor.attr("data-form-output")),
+						$this = $(this);
 
 					for (i = 0; i < dataArray.length; i++) {
 						data[dataArray[i].name] = dataArray[i].value;
 					}
 
 					$.ajax({
-						data:       data,
-						url:        url,
-						dataType:   'jsonp',
-						error:      function (resp, text) {
+						data: data,
+						url: url,
+						dataType: 'jsonp',
+						error: function (resp, text) {
 							$output.html('Server error: ' + text);
 
 							setTimeout(function () {
 								$output.removeClass("active");
 							}, 4000);
 						},
-						success:    function (resp) {
+						success: function (resp) {
 							$output.html(resp.Message).addClass('active');
 
 							setTimeout(function () {
@@ -1491,34 +1491,34 @@
 		// RD Mailform
 		if (plugins.rdMailForm.length) {
 			var i, j, k,
-					msg = {
-						'MF000': 'Successfully sent!',
-						'MF001': 'Recipients are not set!',
-						'MF002': 'Form will not work locally!',
-						'MF003': 'Please, define email field in your form!',
-						'MF004': 'Please, define type of your form!',
-						'MF254': 'Something went wrong with PHPMailer!',
-						'MF255': 'Aw, snap! Something went wrong.'
-					};
+				msg = {
+					'MF000': 'Successfully sent!',
+					'MF001': 'Recipients are not set!',
+					'MF002': 'Form will not work locally!',
+					'MF003': 'Please, define email field in your form!',
+					'MF004': 'Please, define type of your form!',
+					'MF254': 'Something went wrong with PHPMailer!',
+					'MF255': 'Aw, snap! Something went wrong.'
+				};
 
 			for (i = 0; i < plugins.rdMailForm.length; i++) {
 				var $form = $(plugins.rdMailForm[i]),
-						formHasCaptcha = false;
+					formHasCaptcha = false;
 
 				$form.attr('novalidate', 'novalidate').ajaxForm({
-					data:         {
+					data: {
 						"form-type": $form.attr("data-form-type") || "contact",
-						"counter":   i
+						"counter": i
 					},
 					beforeSubmit: function (arr, $form, options) {
 						if (isNoviBuilder)
 							return;
 
 						var form = $(plugins.rdMailForm[this.extraData.counter]),
-								inputs = form.find("[data-constraints]"),
-								output = $("#" + form.attr("data-form-output")),
-								captcha = form.find('.recaptcha'),
-								captchaFlag = true;
+							inputs = form.find("[data-constraints]"),
+							output = $("#" + form.attr("data-form-output")),
+							captcha = form.find('.recaptcha'),
+							captchaFlag = true;
 
 						output.removeClass("active error success");
 
@@ -1527,36 +1527,36 @@
 							// veify reCaptcha
 							if (captcha.length) {
 								var captchaToken = captcha.find('.g-recaptcha-response').val(),
-										captchaMsg = {
-											'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
-											'CPT002': 'Something wrong with google reCaptcha'
-										};
+									captchaMsg = {
+										'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
+										'CPT002': 'Something wrong with google reCaptcha'
+									};
 
 								formHasCaptcha = true;
 
 								$.ajax({
 									method: "POST",
-									url:    "bat/reCaptcha.php",
-									data:   {'g-recaptcha-response': captchaToken},
-									async:  false
+									url: "bat/reCaptcha.php",
+									data: { 'g-recaptcha-response': captchaToken },
+									async: false
 								})
-								.done(function (responceCode) {
-									if (responceCode !== 'CPT000') {
-										if (output.hasClass("snackbars")) {
-											output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + captchaMsg[responceCode] + '</span></p>')
+									.done(function (responceCode) {
+										if (responceCode !== 'CPT000') {
+											if (output.hasClass("snackbars")) {
+												output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>' + captchaMsg[responceCode] + '</span></p>')
 
-											setTimeout(function () {
-												output.removeClass("active");
-											}, 3500);
+												setTimeout(function () {
+													output.removeClass("active");
+												}, 3500);
 
-											captchaFlag = false;
-										} else {
-											output.html(captchaMsg[responceCode]);
+												captchaFlag = false;
+											} else {
+												output.html(captchaMsg[responceCode]);
+											}
+
+											output.addClass("active");
 										}
-
-										output.addClass("active");
-									}
-								});
+									});
 							}
 
 							if (!captchaFlag) {
@@ -1573,12 +1573,12 @@
 							return false;
 						}
 					},
-					error:        function (result) {
+					error: function (result) {
 						if (isNoviBuilder)
 							return;
 
 						var output = $("#" + $(plugins.rdMailForm[this.extraData.counter]).attr("data-form-output")),
-								form = $(plugins.rdMailForm[this.extraData.counter]);
+							form = $(plugins.rdMailForm[this.extraData.counter]);
 
 						output.text(msg[result]);
 						form.removeClass('form-in-process');
@@ -1587,17 +1587,17 @@
 							grecaptcha.reset();
 						}
 					},
-					success:      function (result) {
+					success: function (result) {
 						if (isNoviBuilder)
 							return;
 
 						var form = $(plugins.rdMailForm[this.extraData.counter]),
-								output = $("#" + form.attr("data-form-output")),
-								select = form.find('select');
+							output = $("#" + form.attr("data-form-output")),
+							select = form.find('select');
 
 						form
-						.addClass('success')
-						.removeClass('form-in-process');
+							.addClass('success')
+							.removeClass('form-in-process');
 
 						if (formHasCaptcha) {
 							grecaptcha.reset();
@@ -1644,7 +1644,7 @@
 		if (plugins.stepper.length) {
 			plugins.stepper.stepper({
 				labels: {
-					up:   "",
+					up: "",
 					down: ""
 				}
 			});
@@ -1667,8 +1667,8 @@
 				if ($this.attr("data-custom-toggle-hide-on-blur") === "true") {
 					$body.on("click", $this, function (e) {
 						if (e.target !== e.data[0]
-								&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length
-								&& e.data.find($(e.target)).length === 0) {
+							&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length
+							&& e.data.find($(e.target)).length === 0) {
 							$(e.data.attr('data-custom-toggle')).add(e.data[0]).removeClass('active');
 						}
 					})
@@ -1677,8 +1677,8 @@
 				if ($this.attr("data-custom-toggle-disable-on-blur") === "true") {
 					$body.on("click", $this, function (e) {
 						if (e.target !== e.data[0]
-								&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length === 0
-								&& e.data.find($(e.target)).length === 0) {
+							&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length === 0
+							&& e.data.find($(e.target)).length === 0) {
 							$(e.data.attr('data-custom-toggle')).add(e.data[0]).removeClass('active');
 						}
 					})
@@ -1703,11 +1703,11 @@
 			} else {
 				for (var i = 0; i < plugins.materialParallax.length; i++) {
 					var parallax = $(plugins.materialParallax[i]),
-							imgPath = parallax.data("parallax-img");
+						imgPath = parallax.data("parallax-img");
 
 					parallax.css({
 						"background-image": 'url(' + imgPath + ')',
-						"background-size":  "cover"
+						"background-size": "cover"
 					});
 				}
 			}
@@ -1735,8 +1735,8 @@
 				$body.on('click', $element, (function ($element) {
 					return function (event) {
 						if (event.target !== event.data[0]
-								&& !$(event.target).hasClass("inline-toggle-parent")
-								&& event.data.find($(event.target)).length === 0) {
+							&& !$(event.target).hasClass("inline-toggle-parent")
+							&& event.data.find($(event.target)).length === 0) {
 
 							$element.parents(".inline-toggle-parent").removeClass("active");
 						}
@@ -1753,18 +1753,18 @@
 				var $element = $(plugins.focusToggle[i]);
 
 				$element.hover(
-						function (event) {
-							event.preventDefault();
-							$(this).parents('.focus-toggle-parent').addClass('focus');
-						}
+					function (event) {
+						event.preventDefault();
+						$(this).parents('.focus-toggle-parent').addClass('focus');
+					}
 				);
 
 				$element.parents('.focus-toggle-parent').hover(
-						function () {
-						},
-						function () {
-							$(this).removeClass('focus');
-						}
+					function () {
+					},
+					function () {
+						$(this).removeClass('focus');
+					}
 				)
 			}
 		}
@@ -1791,61 +1791,61 @@
 
 				$slickItem.slick({
 					slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll'), 10) || 1,
-					asNavFor:       $slickItem.attr('data-for') || false,
-					dots:           $slickItem.attr("data-dots") === "true",
-					infinite:       isNoviBuilder ? false : $slickItem.attr("data-loop") === "true",
-					focusOnSelect:  true,
-					arrows:         $slickItem.attr("data-arrows") === "true",
-					swipe:          $slickItem.attr("data-swipe") === "true",
-					autoplay:       isNoviBuilder ? false : $slickItem.attr("data-autoplay") === "true",
-					autoplaySpeed:  $slickItem.attr("data-autoplay-speed") ? parseInt($slickItem.attr("data-autoplay-speed")) : 3500,
-					vertical:       $slickItem.attr("data-vertical") === "true",
-					centerMode:     $slickItem.attr("data-center-mode") === "true",
-					centerPadding:  $slickItem.attr("data-center-padding") ? $slickItem.attr("data-center-padding") : '0.50',
-					mobileFirst:    true,
-					rtl:            isRtl,
-					responsive:     [
+					asNavFor: $slickItem.attr('data-for') || false,
+					dots: $slickItem.attr("data-dots") === "true",
+					infinite: isNoviBuilder ? false : $slickItem.attr("data-loop") === "true",
+					focusOnSelect: true,
+					arrows: $slickItem.attr("data-arrows") === "true",
+					swipe: $slickItem.attr("data-swipe") === "true",
+					autoplay: isNoviBuilder ? false : $slickItem.attr("data-autoplay") === "true",
+					autoplaySpeed: $slickItem.attr("data-autoplay-speed") ? parseInt($slickItem.attr("data-autoplay-speed")) : 3500,
+					vertical: $slickItem.attr("data-vertical") === "true",
+					centerMode: $slickItem.attr("data-center-mode") === "true",
+					centerPadding: $slickItem.attr("data-center-padding") ? $slickItem.attr("data-center-padding") : '0.50',
+					mobileFirst: true,
+					rtl: isRtl,
+					responsive: [
 						{
 							breakpoint: 0,
-							settings:   {
+							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-items'), 10) || 1
 							}
 						},
 						{
 							breakpoint: 575,
-							settings:   {
+							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-sm-items'), 10) || 1
 							}
 						},
 						{
 							breakpoint: 767,
-							settings:   {
+							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-md-items'), 10) || 1
 							}
 						},
 						{
 							breakpoint: 991,
-							settings:   {
+							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-lg-items'), 10) || 1
 							}
 						},
 						{
 							breakpoint: 1199,
-							settings:   {
+							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-xl-items'), 10) || 1
 							}
 						}
 					]
 				})
-				.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-					var $this = $(this),
+					.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+						var $this = $(this),
 							childCarousel = $this.attr('data-child');
 
-					if (childCarousel) {
-						$(childCarousel + ' .slick-slide').removeClass('slick-current');
-						$(childCarousel + ' .slick-slide').eq(currentSlide).addClass('slick-current');
-					}
-				});
+						if (childCarousel) {
+							$(childCarousel + ' .slick-slide').removeClass('slick-current');
+							$(childCarousel + ' .slick-slide').eq(currentSlide).addClass('slick-current');
+						}
+					});
 			}
 		}
 
@@ -1869,7 +1869,7 @@
 		// Lazy iframe
 		if (plugins.lazyIFrame.length) {
 			for (let i = 0; i < plugins.lazyIFrame.length; i++) {
-				lazyInit( $(plugins.lazyIFrame[i]), function () {
+				lazyInit($(plugins.lazyIFrame[i]), function () {
 					this.attr('src', this.attr('data-src'));
 				});
 			}
@@ -1877,55 +1877,7 @@
 
 		// {DEL GRANTER USERPACKAGE}
 		// ThemeSwitcher
-		if (plugins.themeSwitcher.length) {
-			document.documentElement.addEventListener('theme-switching', function () {
-				if (windowReady) {
-					loaderTimeoutId = setTimeout(function () {
-						plugins.preloader.removeClass("loaded");
-					}, 500);
-				}
-			});
 
-			document.documentElement.addEventListener('theme-switched', function (event) {
-				if (windowReady) {
-					clearTimeout(loaderTimeoutId);
-					setTimeout(function () {
-						if (windowReady) {
-							plugins.preloader.addClass("loaded");
-						}
-					}, 400);
-				}
-			});
-
-			document.documentElement.addEventListener('theme-color-change', function (event) {
-				document.querySelector(event.switcher.selectors.color + '[name="' + event.variable + '"]').style.backgroundColor = event.value;
-			});
-
-			var switcher = themeSwitcherInit({
-				variablesFallback: isIE,
-				cookie:            false,
-				themes:            {
-					"soccer":     {
-						styles: 'css/style.css'
-					},
-					"baseball":   {
-						styles: 'css/style-baseball.css'
-					},
-					"basketball": {
-						styles: 'css/style-basketball.css'
-					},
-					"billiards":  {
-						styles: 'css/style-billiards.css'
-					},
-					"bowling":    {
-						styles: 'css/style-bowling.css'
-					},
-					"rugby":      {
-						styles: 'css/style-rugby.css'
-					}
-				}
-			});
-		}
 		// {DEL}
 	});
 }());
