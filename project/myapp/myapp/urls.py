@@ -5,5 +5,5 @@ from .views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name= 'home'),
-    path('beisbol/', include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
+    path('NOTICIAS/BEISBOL/', include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
 ]

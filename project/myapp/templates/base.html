@@ -41,6 +41,10 @@
 {% endblock head %}
 
 <body>
+{% block bodyScrip %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v9.0&appId=795049488022092&autoLogAppEvents=1" nonce="Ebq2vvK6"></script>
+{% endblock bodyScrip %}
 
   <div class="ie-panel"><a href="https://support.microsoft.com/help/17621"><img
         src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820"
@@ -85,9 +89,9 @@
                       Beísbol
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="{% url 'blog:inicio' %}">Noticias</a>
+                      <a class="dropdown-item" href="#">Eventos</a>
+                      <a class="dropdown-item" href="#">Calendario</a>
                     </div>
                   </li>
                   <li class="rd-nav-item dropdown">
@@ -1210,6 +1214,19 @@
   <!-- Javascript-->
   <script src="{% static 'js/core.min.js' %}"></script>
   <script src="{% static 'js/script.js' %}"></script>
+  {% block scripts %} 
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : appId,
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : version'
+          });
+         };
+      </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  {% endblock scripts %}
 </body>
 
 </html>
