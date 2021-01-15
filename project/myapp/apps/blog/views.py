@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post
 
 def blog(request):
-    query = Post.objects.filter(state=True).order_by('-creationDate')
+    query = Post.objects.filter(state=True)
     posts = query
     data = {
         'post': posts,

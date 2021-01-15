@@ -33,7 +33,7 @@ class Category (models.Model):
     name = models.CharField('Nombre de categoria', max_length = 100, null = False, blank= False)
     state = models.BooleanField('Categoria activada / desactivada', default = True)
     Discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE)
-    creationDate = models.DateField('Fecha de creaciÃ³n', auto_now = False, auto_now_add = True)
+    creationDate = models.DateField('Fecha de creación', auto_now = False, auto_now_add = True)
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categrias'
@@ -81,6 +81,8 @@ class Post (models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     contry = models.ForeignKey('Contry', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    outstandingType1 = models.BooleanField('Destacado tipo 1  SI/ NO', default=False)
+    outstandingType2 = models.BooleanField('Destacado tipo 2  SI/ NO', default=False)
     state = models.BooleanField('Publicado / No publicado', default=False)
     creationDate = models.DateField('Fecha de creación', auto_now = False, auto_now_add = True)
     time = models.TimeField('Hora de publicación', blank=False, null= False, auto_now= False, auto_now_add= True)
@@ -88,6 +90,7 @@ class Post (models.Model):
     class Meta:
         verbose_name = 'Artículo'
         verbose_name_plural = 'Artículos'
+        ordering = ['-creationDate']
 
     def __str__(self):
         return self.title
