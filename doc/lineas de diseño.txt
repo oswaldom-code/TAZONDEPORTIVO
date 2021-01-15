@@ -1,4 +1,4 @@
-### LINEAS DE DISEÑO DE APLICACIÓN
+﻿### LINEAS DE DISEÑO DE APLICACIÓN
 
 ## IMAGENES
 
@@ -11,3 +11,8 @@ Foto para mini tarjeta de mejor jugador/bateador/etc: 73 x 137 px
 Software para editar imágenes: Adobe Photoshop
 Software para crear el logo de la app y otros: Adobe Ilustrator
 
+##
+https://dominicanplayers.com/video-player/324/0
+
+## iconos assii
+✎ ✔ ➤ ▷ ➤ ⚾ ⚽ ❤
