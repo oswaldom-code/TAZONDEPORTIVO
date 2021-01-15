@@ -3,31 +3,34 @@
 
 <!-- APP: (crear) PAGE BLOG POR CADA DEPORTE, DISCIPLINA Y CATEGORIA-->
 
-{% block postFutureVertical %}
+{% block verticalCard %}
         {% if post %}
             {% for p in post %}
                 <div class="col-md-6">
-                  <!-- Post Future-->
-                  <article class="post-future"><a class="post-future-figure" href="{% url 'blog:detail_post' p.slug %}"><img
-                        src={{ p.image }} alt="" width="368" height="287" /></a>
+                  <!-- Post Vertial-->
+                  <article class="post-future">
+                        <a class="post-future-figure" href="{% url 'blog:detail_post' p.slug %}">
+                        <img src={{ p.image }} alt="Imagen de artículo" width="328" height="185" /></a>
                     <div class="post-future-main">
                       <h4 class="post-future-title"><a href="{% url 'blog:detail_post' p.slug %}">{{p.title | truncatechars:39}}</a></h4>
                       <div class="post-future-meta">
-                        <!-- Badge-->
-                        <div class="badge badge-secondary">{{p.category}}
-                        </div>
+                        <!-- Tag Category-->
+                        <div class="badge badge-secondary">{{p.category}}</div>
+                        <!-- creationDate-->
                         <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
                           <time datetime="2020">{{p.creationDate}}</time>
                         </div>
                       </div>
                       <hr/>
+                      <!-- Description -->
                       <div class="post-future-text">
-                        <p>{{p.description | truncatechars:80}}</p>
+                        <p>{{p.description | truncatechars:85 }}</p>
                       </div>
                       <div class="post-future-footer group-flex group-flex-xs"><a class="button button-gray-outline"
                           href="{% url 'blog:detail_post' p.slug %}">Leer más</a>
                       </div>
                       </br>
+                      <!-- Social Bottoms -->
                       <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
                     </div>
                   </article>
@@ -42,4 +45,5 @@
         </div>
         {% endif %}
 
-{% endblock postFutureVertical %}
+{% endblock verticalCard %}
+
