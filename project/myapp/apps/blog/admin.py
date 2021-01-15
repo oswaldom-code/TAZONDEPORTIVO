@@ -48,8 +48,8 @@ class PostResouces(resources.ModelResource):
 
 class PostAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields= ['title', 'description']
-    list_display = ('title', 'slug', 'autor', 'category', 'state', 'creationDate', 'time',)
-    list_editable = ['state', 'category']
+    list_display = ('title', 'slug', 'autor', 'category', 'state','outstandingType1','outstandingType2', 'creationDate', 'time',)
+    list_editable = ['state', 'category','outstandingType1', 'outstandingType2']
     resource_class = PostResouces
 
 admin.site.register(Post, PostAdmin)
