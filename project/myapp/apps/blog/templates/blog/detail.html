@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block centralContent %}
+<div class="col-md-12">
+    {% if post %}
+      <!-- Post Detail-->
+        <article class=""><a class="post-future-figure" href="#"></a>
+          <div class="post-future-main">
+            <div class="post-classic-aside" align="center"><a class="post-classic-figure" href="#">
+              <img src={{ post.image }} alt="Imagen principal del artículo" width="400" height="325" align="center"/></a></div>
+              <h4 class="post-future-title"><a href="#">{{ post.title }}</a></h4>
+                <div class="post-future-meta">
+                  <!-- Tag Category-->
+                  <div class="badge badge-secondary">{{post.category}}</div>
+                    <div class="post-future-time">
+                      <span class="icon mdi mdi-clock"></span>
+                      <time datetime="2020">{{ post.creationDate }}</time>
+                    </div>
+                    </br>
+                    <div>Autor/Fuente:
+                      </br>
+                      <div class="future-text">
+                        <strong>{{ post.autor }}</strong>
+                      </div>
+                    </div>
+                </div>
+                <hr/>
+                </br>
+                <div class="post-future-text">
+                  <p>{{ post.content |safe }}</p>
+                </div>
+                <div class="post-future-footer group-flex group-flex-xs"><a class="button button-gray-outline" href="{% url 'blog:homeBlog' %}">Regresar</a></div>
+                </br>
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large">
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a>
+                </div>
+          </div>
+        </article>
+</div>
+  {% else %}
+    <div align = "center">
+      <h1 align = "center">NO EXISTEN POST REGISTRADO!</h1>
+      </br></br>
+      <img src="https://www.devservice.es/wp-content/uploads/2013/11/Buscador.png" alt=""  /></a>
+    </div>
+  {% endif %}
+{% endblock centralContent %}

@@ -1,0 +1,18 @@
+﻿### LINEAS DE DISEÑO DE APLICACIÓN
+
+## IMAGENES
+
+Banner principal: 1920 x 671 px
+Banner de para Articulo Especial: 769 x 397 px
+Logo de equipo para pizarra de próximo evento: 91 x 91 px
+Logo de equipo para tabla de posiciones: 40 x 40 px
+Foto para mini tarjeta de mejor jugador/bateador/etc: 73 x 137 px 
+Área de galería: 212 x 212 px
+Software para editar imágenes: Adobe Photoshop
+Software para crear el logo de la app y otros: Adobe Ilustrator
+
+##
+https://dominicanplayers.com/video-player/324/0
+
+## iconos assii
+✎ ✔ ➤ ▷ ➤ ⚾ ⚽ ❤

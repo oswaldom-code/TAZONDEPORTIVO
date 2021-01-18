@@ -41,6 +41,10 @@
 {% endblock head %}
 
 <body>
+{% block bodyScrip %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v9.0&appId=795049488022092&autoLogAppEvents=1" nonce="Ebq2vvK6"></script>
+{% endblock bodyScrip %}
 
   <div class="ie-panel"><a href="https://support.microsoft.com/help/17621"><img
         src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg' %}" height="42" width="820"
@@ -85,9 +89,9 @@
                       Beísbol
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="{% url 'blog:homeBlog' %}">Noticias</a>
+                      <a class="dropdown-item" href="#">Eventos</a>
+                      <a class="dropdown-item" href="#">Calendario</a>
                     </div>
                   </li>
                   <li class="rd-nav-item dropdown">
@@ -122,10 +126,10 @@
     <section class="section swiper-container swiper-slider swiper-classic bg-gray-2" data-loop="true"
       data-autoplay="4000" data-simulate-touch="false" data-slide-effect="fade">
       <div class="swiper-wrapper">
-        <div class="swiper-slide text-center" data-slide-bg="{% static 'images/slide-1-1920x652.jpg' %}">
+        <div class="swiper-slide text-center" data-slide-bg="{% static 'images/home/slide-1-1920x652.jpg' %}">
           <div class="container">
             <div class="row ">
-              <div class="col-xl-6">
+              <div class="col-xl-5">
                 <div class="swiper-slide-caption">
                   <h2 data-caption-animate="fadeInUp" data-caption-delay="100">Para los fanáticos</h2>
                   <h4 data-caption-animate="fadeInUp" data-caption-delay="200">del beísbol y softbol</h4><a
@@ -136,7 +140,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide" data-slide-bg="{% static 'images/slide-2-1920x652.jpg' %}">
+        <div class="swiper-slide" data-slide-bg="{% static 'images/home/slide-2-1920x652.jpg' %}">
           <div class="container">
             <div class="row">
               <div class="col-xl-5">
@@ -150,7 +154,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide" data-slide-bg="{% static 'images/slide-3-1920x652.jpg' %}">
+        <div class="swiper-slide" data-slide-bg="{% static 'images/home/slide-3-1920x652.jpg' %}">
           <div class="container">
             <div class="row">
               <div class="col-xl-5">
@@ -182,8 +186,14 @@
               <!-- Heading Component-->
               <article class="heading-component">
                 <div class="heading-component-inner">
-                  <h5 class="heading-component-title">Noticias más recientes
-                  </h5><a class="button button-xs button-gray-outline" href="#">Todas las noticias</a>
+                  <h5 class="heading-component-title">
+                  {% block titleBodyBar %}Noticias más recientes: 
+                  </h5>
+                  <h6>Liga Venezolana de beísbol profesional | LVBP</h6>
+                  {% endblock titleBodyBar%}
+
+                  {% block seeAll %}
+                  {% endblock seeAll%}
                 </div>
               </article>
 
@@ -192,60 +202,14 @@
                 {% block centralContent %}
                 {% endblock centralContent %}
 
-                {% block postFutureVertical %}
+                {% block verticalCard %}
+                {% endblock verticalCard %}
 
-                {% endblock postFutureVertical %}
+                {% block outstandingType1 %}
+                {% endblock outstandingType1 %}
 
-                <div class="col-md-12">
-                  <!-- Post Gloria-->
-                  <article class="post-gloria"><img src="{% static 'images/post-gloria-1-769x429.jpg' %}" alt=""
-                      width="769" height="429" />
-                    <div class="post-gloria-main">
-                      <h3 class="post-gloria-title"><a href="#">Premier League Winners and Losers: a quick look</a></h3>
-                      <div class="post-gloria-meta">
-                        <!-- Badge-->
-                        <div class="badge badge-primary">The League
-                        </div>
-                        <div class="post-gloria-time"><span class="icon mdi mdi-clock"></span>
-                          <time datetime="2020">April 15, 2020</time>
-                        </div>
-                      </div>
-                      <div class="post-gloria-text">
-                        <svg version="1.1" x="0px" y="0px" width="6.888px" height="4.68px" viewbox="0 0 6.888 4.68"
-                          enable-background="new 0 0 6.888 4.68" xml:space="preserve">
-                          <path d="M1.584,0h1.8L2.112,4.68H0L1.584,0z M5.112,0h1.776L5.64,4.68H3.528L5.112,0z"></path>
-                        </svg>
-                        <p>During this year’s premier league, we are glad to announce that there are new players who
-                          are...</p>
-                      </div><a class="button" href="#">Read more</a>
-                    </div>
-                  </article>
-                </div>
 
                 {% block postFutureHorizontal %}
-                <div class="col-md-12">
-                  <!-- Post Future-->
-                  <article class="post-future post-future-horizontal"><a class="post-future-figure" href="#"><img
-                        src="{% static 'images/news-3-1-370x325.jpg' %}" alt="" width="370" height="325" /></a>
-                    <div class="post-future-main">
-                      <h4 class="post-future-title"><a href="#">Zidane: “We’re not going to change the way we play at
-                          the Calderón”</a></h4>
-                      <div class="post-future-meta">
-                        <!-- Badge-->
-                        <div class="badge badge-red">hot<span class="icon mdi mdi-fire"></span>
-                        </div>
-                        <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
-                          <time datetime="2020">April 15, 2020</time>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="post-future-text">
-                        <p>Zidane spoke to the media at the Real Madrid City. The Whites coach explained how the team is
-                          going in to the second leg of the Champions...</p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
                 {% endblock postFutureHorizontal %}
 
 
@@ -381,102 +345,29 @@
           <div class="col-lg-4">
             <aside class="aside-components">
               <div class="aside-component">
-                <div class="owl-carousel-outer-navigation-1">
-                  <!-- Heading Component-->
-                  <article class="heading-component">
-                    <div class="heading-component-inner">
-                      <h5 class="heading-component-title">Últimos resultados
-                      </h5>
-                      <div class="owl-carousel-arrows-outline">
-                        <div class="owl-nav">
-                          <button class="owl-arrow owl-arrow-prev"></button>
-                          <button class="owl-arrow owl-arrow-next"></button>
-                        </div>
-                      </div>
+            <div class="owl-carousel-outer-navigation-1">
+              <!-- Heading Component-->
+              <article class="heading-component">
+                <div class="heading-component-inner">
+                  <h5 class="heading-component-title">Últimos resultados</h5>
+                  <div class="owl-carousel-arrows-outline">
+                    <div class="owl-nav">
+                      <button class="owl-arrow owl-arrow-prev"></button>
+                      <button class="owl-arrow owl-arrow-next"></button>
                     </div>
-                  </article>
-                  <!-- Owl Carousel-->
-                  <div class="owl-carousel owl-spacing-1" data-items="1" data-dots="false" data-nav="true"
-                    data-autoplay="true" data-autoplay-speed="4000" data-stage-padding="0" data-loop="true"
-                    data-margin="30" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut"
-                    data-nav-custom=".owl-carousel-outer-navigation-1">
-                    <!-- Game Result Creative-->
-                    <article class="game-result game-result-creative">
-                      <div class="game-result-main-vertical">
-                        <div class="game-result-team game-result-team-horizontal game-result-team-first">
-                          <figure class="game-result-team-figure"><img
-                              src="{% static 'images/team-sportland-31x41.png' %}" alt="" width="31" height="41" />
-                          </figure>
-                          <div class="game-result-team-title">
-                            <div class="game-result-team-name">Sportland</div>
-                            <div class="game-result-team-country">Los angeles</div>
-                          </div>
-                          <div class="game-result-score game-result-score-big game-result-team-win">2<span
-                              class="game-result-team-label game-result-team-label-right">Win</span>
-                          </div>
-                        </div><span class="game-result-team-divider">VS</span>
-                        <div class="game-result-team game-result-team-horizontal game-result-team-second">
-                          <figure class="game-result-team-figure"><img src="{% static 'images/team-fenix-40x32.png' %}"
-                              alt="" width="40" height="32" />
-                          </figure>
-                          <div class="game-result-team-title">
-                            <div class="game-result-team-name">Real madrid</div>
-                            <div class="game-result-team-country">Spain</div>
-                          </div>
-                          <div class="game-result-score game-result-score-big">1
-                          </div>
-                        </div>
-                      </div>
-                      <div class="game-result-footer">
-                        <ul class="game-result-details">
-                          <li>Home</li>
-                          <li>New Yorkers Stadium</li>
-                          <li>
-                            <time datetime="2020-04-14">April 14, 2020</time>
-                          </li>
-                        </ul>
-                      </div>
-                    </article>
-                    <!-- Game Result Creative-->
-                    <article class="game-result game-result-creative">
-                      <div class="game-result-main-vertical">
-                        <div class="game-result-team game-result-team-horizontal game-result-team-first">
-                          <figure class="game-result-team-figure"><img
-                              src="{% static 'images/team-bavaria-fc-26x34.png' %}" alt="" width="26" height="34" />
-                          </figure>
-                          <div class="game-result-team-title">
-                            <div class="game-result-team-name">Bavaria FC</div>
-                            <div class="game-result-team-country">Germany</div>
-                          </div>
-                          <div class="game-result-score game-result-score-big">2
-                          </div>
-                        </div><span class="game-result-team-divider">VS</span>
-                        <div class="game-result-team game-result-team-horizontal game-result-team-second">
-                          <figure class="game-result-team-figure"><img
-                              src="{% static 'images/team-athletic-33x30.png' %}" alt="" width="33" height="30" />
-                          </figure>
-                          <div class="game-result-team-title">
-                            <div class="game-result-team-name">Atletico</div>
-                            <div class="game-result-team-country">USA</div>
-                          </div>
-                          <div class="game-result-score game-result-score-big game-result-team-win">3<span
-                              class="game-result-team-label game-result-team-label-right">Win</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="game-result-footer">
-                        <ul class="game-result-details">
-                          <li>Away</li>
-                          <li>Bavaria Stadium</li>
-                          <li>
-                            <time datetime="2020-04-14">April 14, 2020</time>
-                          </li>
-                        </ul>
-                      </div>
-                    </article>
                   </div>
                 </div>
+              </article>
+                <!-- Owl Carousel-->
+                <div class="owl-carousel owl-spacing-1" data-items="1" data-dots="false" data-nav="true"
+                  data-autoplay="true" data-autoplay-speed="4000" data-stage-padding="0" data-loop="true"
+                  data-margin="30" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut"
+                  data-nav-custom=".owl-carousel-outer-navigation-1">
+              {% block Blackboard %}
+              {% endblock Blackboard %}
               </div>
+            </div>
+          </div>
               <div class="aside-component">
                 <!-- Heading Component-->
                 <article class="heading-component">
@@ -1210,6 +1101,19 @@
   <!-- Javascript-->
   <script src="{% static 'js/core.min.js' %}"></script>
   <script src="{% static 'js/script.js' %}"></script>
+  {% block scripts %} 
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : appId,
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : version'
+          });
+         };
+      </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  {% endblock scripts %}
 </body>
 
 </html>

@@ -1,0 +1,54 @@
+### Tema personalizado del Admin ###
+
+App: settings/admin_interface
+
+1)intalar app:
+pip install django-admin-interface
+
+2) Configurar settings.py:
+INSTALLED_APPS = (
+    #...
+    'admin_interface',
+    'colorfield',
+    #...
+    'django.contrib.admin',
+    #...
+)
+X_FRAME_OPTIONS='SAMEORIGIN' # only if django version >= 3.0
+
+3) Migrar:
+py manage.py migrate
+
+4) Actualizar interfaz:
+pip install django-admin-interface --upgrade
+
+5) Instalar tema fundation:
+python manage.py loaddata admin_interface_theme_foundation.json
+
+más detalles: https://pypi.org/project/django-admin-interface/
+
+### Editor de Texto ###
+
+App: settings/'ckeditor'
+
+1) Installar:
+pip install django-ckeditor
+
+2) Configurar settings.py: ckeditor
+
+nota: Profundizar en la instalación completa
+
+más detalles: https://django-ckeditor.readthedocs.io/en/latest/#installation
+
+### Import-Export ###
+
+App: settings/import_export
+
+1) Installar:
+pip install django-import-export
+
+2) settings.py
+INSTALLED_APPS = (
+    ...
+    'import_export',
+)
