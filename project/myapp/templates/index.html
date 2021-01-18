@@ -17,7 +17,7 @@
                       <h4 class="post-future-title"><a href="{% url 'blog:detail_post' p.slug %}">{{p.title | truncatechars:39}}</a></h4>
                       <div class="post-future-meta">
                         <!-- Tag Category-->
-                        <div class="badge badge-secondary">{{p.category}}</div>
+                        <div class="badge badge-secondary">{{ p.category }}</div>
                         <!-- creationDate-->
                         <div class="post-future-time"><span class="icon mdi mdi-clock"></span>
                           <time datetime="2020">{{p.creationDate }}</time>
@@ -103,3 +103,42 @@
                 </div>
     {% endfor%}
 {% endblock postFutureHorizontal %}
+
+{% block Blackboard %}
+        {% for item in results %}
+                  <!-- Blackboard Results-->
+                  <article class="game-result game-result-creative">
+                    <div class="game-result-main-vertical">
+                      <!-- Home Team-->
+                      <div class="game-result-team game-result-team-horizontal game-result-team-first">
+                        <figure class="game-result-team-figure">
+                          <img src="{{ MEDIA_URL }}logo/{{ item.winnerTeam|slugify|lower}}.png" alt="" />
+                        </figure>
+                        <div class="game-result-team-title">
+                          <div class="game-result-team-name">{{ item.winnerTeam|cut:'VENEZUELA-LVBP:' }}</div>
+                        </div>
+                        <div class="game-result-score game-result-score-big game-result-team-win">{{ item.runsScoredWinner }}
+                          <span class="game-result-team-label game-result-team-label-right"><i class="fa fa-trophy" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <span class="game-result-team-divider">VS</span>
+                      <!-- Loser Team-->
+                      <div class="game-result-team game-result-team-horizontal game-result-team-second">
+                        <figure class="game-result-team-figure">
+                          <img src="{{ MEDIA_URL }}logo/{{ item.loserTeam|slugify|lower}}.png" alt=""  />
+                        </figure>
+                        <div class="game-result-team-title">
+                          <div class="game-result-team-name">{{ item.loserTeam|cut:'VENEZUELA-LVBP:'}}</div>
+                        </div>
+                        <div class="game-result-score game-result-score-big">{{ item.runsScoredLoser}}</div>
+                      </div>
+                    </div>
+                    <div class="game-result-footer">
+                      <ul class="game-result-details">
+                        <li>{{item.stadium|cut:'VENEZUELA-CIUDAD 1:'}}</li>
+                        <li>{{item.date}}</li>
+                      </ul>
+                    </div>
+                  </article>
+        {% endfor %}
+{% endblock Blackboard %}
