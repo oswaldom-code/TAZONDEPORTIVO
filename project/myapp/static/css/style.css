@@ -2404,7 +2404,7 @@ a.icon-gray-500:hover, a.icon-gray-500.active {
 	font-size: 15px;
 	line-height: 38px;
 	text-align: center;
-	border-radius: 3px;
+	border-radius: 50px;
 	color: #fff;
 	background: #424349;
 }
@@ -15274,7 +15274,7 @@ disabled look for disabled choices in the results dropdown
 	line-height: 46px;
 	color: #fff;
 	background: #35ad79;
-	border-radius: 3px;
+	border-radius: 50px;
 	overflow: hidden;
 	text-align: center;
 	text-decoration: none;
@@ -15304,7 +15304,7 @@ html.tablet .ui-to-top {
 @media (min-width: 576px) {
 	.ui-to-top {
 		right: 40px;
-		bottom: 40px;
+		bottom: 60px;
 	}
 }
 
