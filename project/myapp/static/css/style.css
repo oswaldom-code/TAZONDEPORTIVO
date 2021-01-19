@@ -3004,6 +3004,40 @@ html .divider-secondary::after {
 	margin-top: 20px;
 }
 
+/**/
+.divider-large {
+	font-size: 0;
+	line-height: 0;
+}
+
+.divider-large::after {
+	content: '';
+	display: inline-block;
+	width: 200px;
+	height: 3px;
+	background: #35ad79;
+	display: inline-block;
+}
+
+* + .divider-large {
+	margin-top: 12px;
+}
+
+.divider-large + * {
+	margin-top: 30px;
+}
+
+.divider-large + * {
+	margin-top: 20px;
+}
+
+.product-by{
+	position: absolute;
+	bottom: 70px;
+	width: inherit;
+	text-align: center;
+}
+/**/
 .divider-middle {
 	font-size: 0;
 	line-height: 0;
