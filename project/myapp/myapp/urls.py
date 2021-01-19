@@ -7,7 +7,9 @@ from .views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('NOTICIAS/BEISBOL/',
+    path('NOTICIAS/',
+         include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
+    path('ARTICULOS/',
          include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)  # Servir imagenes en desarrollo
