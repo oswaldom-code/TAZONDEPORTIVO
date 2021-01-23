@@ -11,9 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'kpvu3t8$vr&2(y2!+ia*@xl)32z@cqky+s8pn&rcwogz-rkeqk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if DEBUG is False:
+    ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
+
+if DEBUG is True:
+    ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -121,12 +125,12 @@ STATIC_URL = '/static/'
 #Base url to serve media files
 MEDIA_URL = '/media/'
 
-# Path where media is stored
+# Path where media is stored, upload users file
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Static files (CSS, JavaScript, Images)
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
-]
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')

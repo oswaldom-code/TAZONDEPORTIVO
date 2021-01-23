@@ -1,0 +1,38 @@
+
+{% load static from STATICFILES_DIRS %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>404 HTML Tempalte by Colorlib</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+
+	<!-- Custom stlylesheet -->
+	 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>Oops!</h1>
+			</div>
+			<h2>404 - Página no encontrada</h2>
+			<p>Es posible que la página que está buscando se haya eliminado, se cambiara el nombre o no está disponible temporalmente.</p>
+			<a href="#">Ir a pagina principal</a>
+		</div>
+	</div>
+
+</body>
+
+</html>
