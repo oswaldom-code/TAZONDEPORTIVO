@@ -8,8 +8,8 @@ urlpatterns = [
     path('', home, name='home'),
     path('NOTICIAS/',
          include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
-    path('ARTICULOS/',
-         include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
+    #path('ARTICULOS/',
+    #     include(('apps.blog.urls', 'beisbol_blog'), namespace='blog')),
     url(r'^$', home, name='home'),
 ]
 
