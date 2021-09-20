@@ -1,1 +1,1 @@
-web: gunicorn tazon-deportivo.wsgi
+web: gunicorn {{ project_name }}.wsgi
