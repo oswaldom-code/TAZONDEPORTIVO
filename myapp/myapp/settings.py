@@ -22,13 +22,13 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
-
-if DEBUG is False:
-    ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
+DEBUG = False
 
 if DEBUG is True:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
+
+if DEBUG is False:
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -156,5 +156,3 @@ MIDDLEWARE_CLASSES = (
     'whitenoise.middleware.WhiteNoiseMiddleware',)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-DISABLE_COLLECTSTATIC=1
