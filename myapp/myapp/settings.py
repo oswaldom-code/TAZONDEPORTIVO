@@ -1,19 +1,34 @@
 from pathlib import Path
 import os
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kpvu3t8$vr&2(y2!+ia*@xl)32z@cqky+s8pn&rcwogz-rkeqk'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+if DEBUG is True:
+    ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
+
+if DEBUG is False:
+    ALLOWED_HOSTS = ['tazon-deportivo.herokuapp.com']
 
 # Application definition
 
@@ -69,8 +84,12 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER':  env('DB_USER'),
+        'PASSWORD':  env('DB_PASSWORD'),
+        'NAME':  env('DB_NAME'),
+        'HOST':  env('DB_HOST'),
+        'PORT':  env('DB_PORT'),
     }
 }
 
@@ -121,12 +140,19 @@ STATIC_URL = '/static/'
 #Base url to serve media files
 MEDIA_URL = '/media/'
 
-# Path where media is stored
+# Path where media is stored, upload users file
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Static files (CSS, JavaScript, Images)
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
-]
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/ 
+    'whitenoise.middleware.WhiteNoiseMiddleware',)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

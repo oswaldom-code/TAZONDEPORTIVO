@@ -1,4 +1,3 @@
-#Requirements
 ckeditor
 django-import-export
 django-admin-interface
