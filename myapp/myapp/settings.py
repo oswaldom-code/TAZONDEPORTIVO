@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import environ
+import dj_database_url 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,17 +82,20 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER':  env('DB_USER'),
-        'PASSWORD':  env('DB_PASSWORD'),
-        'NAME':  env('DB_NAME'),
-        'HOST':  env('DB_HOST'),
-        'PORT':  env('DB_PORT'),
+if DEBUG is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'USER':  env('DB_USER'),
+            'PASSWORD':  env('DB_PASSWORD'),
+            'NAME':  env('DB_NAME'),
+            'HOST':  env('DB_HOST'),
+            'PORT':  env('DB_PORT'),
+        }
     }
-}
+if DEBUG is False:
+    db_from_env = dj_database_url.config(conn_max_age=500)  
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -146,7 +150,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Static files (CSS, JavaScript, Images)
 
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
