@@ -25,11 +25,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-if DEBUG is True:
-    ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
+ALLOWED_HOSTS = ['127.0.0.1:8000', '*']
 
 if DEBUG is False:
-    ALLOWED_HOSTS = ['tazon-deportivo.herokuapp.com']
+    ALLOWED_HOSTS = ['tazondeportivo.herokuapp.com/']
 
 # Application definition
 
@@ -85,7 +84,7 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 if DEBUG is True:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'USER':  env('DB_USER'),
             'PASSWORD':  env('DB_PASSWORD'),
             'NAME':  env('DB_NAME'),
