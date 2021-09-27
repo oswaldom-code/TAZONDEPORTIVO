@@ -1,1 +1,1 @@
-web: gunicorn tazondeportivo.wsgi
+web: gunicorn myapp.wsgi
